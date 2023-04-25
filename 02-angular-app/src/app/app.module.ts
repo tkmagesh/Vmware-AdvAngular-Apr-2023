@@ -8,6 +8,15 @@ import { SalaryCalculatorComponent } from './salary-calculator/salary-calculator
 import { SalaryCalculatorModel } from './salary-calculator/salaryCalculator.model';
 import { SalaryCalculatorModelV2 } from './salary-calculator/salaryCalculatorV2.model';
 
+
+//useValue
+// const model = new SalaryCalculatorModelV2()
+
+function salaryCalculatorModelFactory(){
+  const model = new SalaryCalculatorModelV2()
+  return model;
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +30,9 @@ import { SalaryCalculatorModelV2 } from './salary-calculator/salaryCalculatorV2.
   providers: [
     // SalaryCalculatorModel
     // {provide : SalaryCalculatorModel, useClass : SalaryCalculatorModel}
-    { provide: SalaryCalculatorModel, useClass: SalaryCalculatorModelV2 }
+    // { provide: SalaryCalculatorModel, useClass: SalaryCalculatorModelV2 }
+    // {provide : SalaryCalculatorModel, useValue : model}
+    { provide : SalaryCalculatorModel, useFactory : salaryCalculatorModelFactory}
   ],
   bootstrap: [AppComponent]
 })

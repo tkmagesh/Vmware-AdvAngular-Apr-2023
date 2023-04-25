@@ -6,9 +6,9 @@ import { SalaryCalculatorModelV2 } from './salaryCalculatorV2.model';
   selector: 'app-salary-calculator',
   templateUrl: './salary-calculator.component.html',
   styleUrls: ['./salary-calculator.component.css'],
-  providers : [
+  /* providers : [
     {provide : SalaryCalculatorModel, useClass : SalaryCalculatorModelV2}
-  ]
+  ] */
 })
 export class SalaryCalculatorComponent {
   
