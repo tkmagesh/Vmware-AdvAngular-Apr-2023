@@ -43,3 +43,23 @@ Angular Building Blocks
         Logical grouping of other Angular building blocks (component, directive, pipe, service)
         Offer accessibility boundaries
         Registry of angular entities so that the Dependency Injector can inject the dependencies
+
+
+User Events
+Timer Events
+Ajax Events
+
+
+
+Implement Salary Calculator in Angular (Time : 15 mins)
+
+State Type
+    UI state
+        Assists in the presentation aspects of the application
+        This might NOT be needed in other parts of application
+        It is ok to maintain this in the component
+
+    Application State
+        Assists in the domain logic of the application
+        It is highly likely that this data is needed in other parts of the application
+        DO NOT maintain this in the component
