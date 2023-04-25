@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { APP_NAME_TOKEN } from '../shared/appInfo';
 
 @Component({
   selector: 'app-greeter',
@@ -10,7 +11,7 @@ export class GreeterComponent {
   message : string = '[Default greet message]'
   userName : string = '';
 
-  constructor(){
+  constructor(@Inject(APP_NAME_TOKEN) public appName : string){
     /* 
     setTimeout(() => {
       this.message = '5 seconds elapsed'

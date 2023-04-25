@@ -7,15 +7,10 @@ import { FormsModule } from '@angular/forms';
 import { SalaryCalculatorComponent } from './salary-calculator/salary-calculator.component';
 import { SalaryCalculatorModel } from './salary-calculator/salaryCalculator.model';
 import { SalaryCalculatorModelV2 } from './salary-calculator/salaryCalculatorV2.model';
+import { APP_NAME, APP_NAME_TOKEN } from './shared/appInfo';
 
 
-//useValue
-// const model = new SalaryCalculatorModelV2()
 
-function salaryCalculatorModelFactory(){
-  const model = new SalaryCalculatorModelV2()
-  return model;
-}
 
 @NgModule({
   declarations: [
@@ -32,8 +27,18 @@ function salaryCalculatorModelFactory(){
     // {provide : SalaryCalculatorModel, useClass : SalaryCalculatorModel}
     // { provide: SalaryCalculatorModel, useClass: SalaryCalculatorModelV2 }
     // {provide : SalaryCalculatorModel, useValue : model}
-    { provide : SalaryCalculatorModel, useFactory : salaryCalculatorModelFactory}
+    { provide : SalaryCalculatorModel, useFactory : salaryCalculatorModelFactory},
+    { provide : APP_NAME_TOKEN, useValue : APP_NAME}
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+//useValue
+// const model = new SalaryCalculatorModelV2()
+
+//useFactory
+function salaryCalculatorModelFactory() {
+  const model = new SalaryCalculatorModelV2()
+  return model;
+}
