@@ -22,3 +22,24 @@ About You:
     Any specific topics?
         - LifeCycle Hooks
         - State Management (ngxs)
+
+Salary = Basic + HRA + DA - Tax
+
+Angular Building Blocks
+    - Component
+        Encapsulates Presenation (template + css) + User Events + State
+
+    - Directive
+        Encapsulates DOM manipulation 
+        = component without template
+
+    - Pipe
+        Data transformation logic for presentation
+
+    - Service
+        Non UI responsibilities
+
+    - Module
+        Logical grouping of other Angular building blocks (component, directive, pipe, service)
+        Offer accessibility boundaries
+        Registry of angular entities so that the Dependency Injector can inject the dependencies
