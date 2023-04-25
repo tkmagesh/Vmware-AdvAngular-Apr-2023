@@ -1,0 +1,24 @@
+Magesh Kuppan
+
+Schedule:
+    Session-1   : t + 1:30hrs
+    Tea Break   : 20 mins
+    Session-2   : 1:30hrs
+    Lunch Break : 1 hr
+    Session-3   : 1:30hrs
+    Tea Break   : 20 mins
+    Session-4   : 1:30hrs
+
+Methodology:
+    - No powerpoints
+    - 100% Code driven class
+
+Repo:
+    https://github.com/tkmagesh/vmware-advangular-apr-2023
+
+About You:
+    Angular Experience
+    Any other JS frameworks
+    Any specific topics?
+        - LifeCycle Hooks
+        - State Management (ngxs)
