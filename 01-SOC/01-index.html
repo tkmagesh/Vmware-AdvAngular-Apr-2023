@@ -21,6 +21,30 @@
             padding-right: 20px;
         }
     </style>
+    <script>
+        /* 
+            Assumptions:
+                1. The implementation 100% functionally right
+                2. Refactoring to 'JS & CSS' files will be done later
+        */
+        $(function(){
+            $('#btnCalculate').on('click', () => {
+                let basic = parseInt($('#txtBasic').val()),
+                    hra = parseInt($('#txtHra').val()),
+                    da = parseInt($('#txtDa').val()),
+                    tax = parseInt($('#rangeTax').val());
+
+                let gross = basic + hra + da,
+                    net = gross * ((100-tax)/100);
+
+                $('#tdBasic').text(basic);
+                $('#tdHra').text(hra);
+                $('#tdDa').text(da);
+                $('#tdTax').text(tax);
+                $('#tdSalary').text(net);
+            });
+        });
+    </script>
 </head>
 <body>
     <h1>Salary Calculator</h1>
@@ -28,25 +52,32 @@
     <section>
         <div class="field">
             <label for="">Basic :</label>
-            <input type="number" name="" id="txtBasic">
+            <input type="number" id="txtBasic">
         </div>
         <div class="field">
             <label for="">HRA :</label>
-            <input type="number" name="" id="txtHra">
+            <input type="number" id="txtHra">
         </div>
         <div class="field">
             <label for="">DA :</label>
-            <input type="number" name="" id="txtDa">
+            <input type="number" id="txtDa">
         </div>
         <div class="field">
             <label for="">Tax :</label>
-            <input type="range" name="" id="rangeTax" min="0" max="30" value="0">
+            <input type="range" id="rangeTax" min="0" max="30" value="0">
         </div>
         <div class="field">
             <button id="btnCalculate">Calculate</button>
         </div>
         <div class="field">
             <table>
+                <tr>
+                    <th>Basic</th>
+                    <th>HRA</th>
+                    <th>DA</th>
+                    <th>Tax</th>
+                    <th>Salary</th>
+                </tr>
                 <tr>
                     <td id="tdBasic">[basic]</td>
                     <td id="tdHra">[hra]</td>
