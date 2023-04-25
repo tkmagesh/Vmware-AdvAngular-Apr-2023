@@ -1,0 +1,41 @@
+<h3>Salary Calculator</h3>
+<hr>
+<section>
+    <div class="field">
+        <label for="">Basic :</label>
+        <input type="number" [(ngModel)]="model.basic" >
+    </div>
+    <div class="field">
+        <label for="">HRA :</label>
+        <input type="number" [(ngModel)]="model.hra">
+    </div>
+    <div class="field">
+        <label for="">DA :</label>
+        <input type="number" [(ngModel)]="model.da" >
+    </div>
+    <div class="field">
+        <label for="">Tax :</label>
+        <input type="range" min="0" max="30" [(ngModel)]="model.tax">
+    </div>
+    <div class="field">
+        <button (click)="model.calculate()">Calculate</button>
+    </div>
+    <div class="field">
+        <table>
+            <tr>
+                <th>Basic</th>
+                <th>HRA</th>
+                <th>DA</th>
+                <th>Tax</th>
+                <th>Salary</th>
+            </tr>
+            <tr>
+                <td>{{model.basic}}</td>
+                <td>{{model.hra}}</td>
+                <td>{{model.da}}</td>
+                <td>{{model.tax}}</td>
+                <td>{{model.salary}}</td>
+            </tr>
+        </table>
+    </div>
+</section>
