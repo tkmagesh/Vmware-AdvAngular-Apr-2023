@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug Tracker</title>
+    <!-- 
+        Use Cases:
+            1. Add new bugs
+            2. List the added bugs
+            3. Toggle the 'closed' status of any bug
+            4. Remove the bug
+            5. Remove all closed bugs
+            6. Display Stats
+            7. Sort the bugs
+            8. Persist the bugs in the browser localStorage
+            9. Improve the display of 'createdAt' for the bugs
+            10. Persist the bugs in the server
+            12. Implement data validation
+            12. Make the bugs accessible using unique URLs
+            13. Implement CRUD for 'projects'
+            14. Implement authentication
+            15. Build & Deployment
+     -->
+     <style>
+        body{
+            margin: 20px;
+        }
+        section{
+            margin-bottom: 10px;
+        }
+        .bugname, .stats {
+            font-size: 18pt;
+        }
+        .bugname {
+            cursor: pointer;
+        }
+        .closed {
+            color : red;
+            text-decoration: line-through;
+            font-style: italic;
+            font-weight: bold;
+        }
+        .datetime{
+            font-style: italic;
+            color : gray;
+        }
+        ol {
+            width: 400px;
+            list-style: none;
+            -webkit-padding-start: 0px;
+        }
+        li {
+            border : 1px solid gray;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #e7e7e7;
+        }
+
+     </style>
+     <!-- 
+        Create a bugs component
+        update the template and style in the bugs component
+        render the bugs component
+
+      -->
+</head>
+<body>
+    <!-- App Component -->
+    <h1>Bug Tracker</h1>
+    <hr>
+    <!-- Bugs Component -->
+    <section class="stats">
+        <span class="closed">1</span>
+        <span> / </span>
+        <span>2</span>
+    </section>
+    <section class="edit">
+        <label for="">Bug Name :</label>
+        <input type="text" name="" id="">
+        <button>Add New</button>
+    </section>
+    <section class="sort">
+        <label for="">Order By :</label>
+        <select name="" id="">
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+        </select>
+        <label for="">Descending ? :</label>
+        <input type="checkbox" name="" id="">
+    </section>
+    <section class="list">
+        <ol>
+            <li>
+                <span class="bugname">[Bug - 1]</span>
+                <div class="datetime">[Created At]</div>
+                <button>Remove</button>
+            </li>
+            <li>
+                <span class="bugname closed">[Bug - 2]</span>
+                <div class="datetime">[Created At]</div>
+                <button>Remove</button>
+            </li>
+        </ol>
+        <button>Remove Closed</button>
+    </section>
+</body>
+</html>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { GreeterComponent } from './greeter/greeter.component';
@@ -9,9 +10,6 @@ import { SalaryCalculatorModel } from './salary-calculator/salaryCalculator.mode
 import { SalaryCalculatorModelV2 } from './salary-calculator/salaryCalculatorV2.model';
 import { APP_NAME, APP_NAME_TOKEN } from './shared/appInfo';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +18,8 @@ import { APP_NAME, APP_NAME_TOKEN } from './shared/appInfo';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     // SalaryCalculatorModel
