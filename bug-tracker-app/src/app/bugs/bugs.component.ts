@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Bug } from './models/bug';
+import { BugOperationsService } from './services/bug-operations.service';
 
 @Component({
   selector: 'app-bugs',
@@ -11,6 +12,10 @@ export class BugsComponent implements OnInit{
   bugs : Bug[] = []
   newBugName : string = ''
 
+  constructor(private bugOperations : BugOperationsService){
+
+  }
+
   ngOnInit(): void {
     this.bugs.push({id : 1, name : 'Server communication failure', isClosed : false, createdAt : new Date('10-Mar-2023')})
     this.bugs.push({ id: 2, name: 'Application not responding', isClosed: true, createdAt: new Date('10-Feb-2023') })
@@ -20,17 +25,12 @@ export class BugsComponent implements OnInit{
 
   onAddNewClick(){
     const newBugId = this.bugs.reduce((result, bug) => result > bug.id ? result : bug.id, 0) + 1
-    const newBug : Bug = {
-      id : newBugId,
-      name : this.newBugName,
-      isClosed : false,
-      createdAt : new Date()
-    }
+    const newBug = this.bugOperations.createNew(newBugId, this.newBugName)
     this.bugs.push(newBug)
   }
 
   onBugNameClick(bugToToggle : Bug){
-    bugToToggle.isClosed = !bugToToggle.isClosed
+    this.bugOperations.toggle(bugToToggle)
   }
 
   onBtnRemoveClick(bugToRemove : Bug){
