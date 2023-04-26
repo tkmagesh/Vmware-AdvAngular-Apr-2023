@@ -2,6 +2,7 @@
 
 <app-bug-edit (bugCreate)="onBugCreate($event)"></app-bug-edit>
 
+<!-- Refactor to BugSort component -->
 <section class="sort">
     <label for="">Order By :</label>
     <select [(ngModel)]="bugSortAttrName">
@@ -14,8 +15,11 @@
     <label for="">Descending ? :</label>
     <input type="checkbox" [(ngModel)]="bugSortDesc" >
 </section>
+
+<!-- Refactor to BugList component -->
 <section class="list">
     <ol>
+        <!-- BugItem -->
         <li *ngFor="let bug of ( bugs | sort:bugSortAttrName:bugSortDesc ) ">
             <span 
                 class="bugname"

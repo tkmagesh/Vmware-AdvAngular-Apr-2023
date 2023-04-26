@@ -8,8 +8,7 @@ import { Bug } from '../models/bug';
   changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class BugStatsComponent {
-
-
+  
   @Input('data')
   bugs : Bug[] = []
 
