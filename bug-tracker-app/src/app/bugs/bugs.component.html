@@ -1,5 +1,5 @@
 <section class="stats">
-    <span class="closed">1</span>
+    <span class="closed">{{getClosedBugsCount()}}</span>
     <span> / </span>
     <span>{{bugs.length}}</span>
 </section>
@@ -10,18 +10,19 @@
 </section>
 <section class="sort">
     <label for="">Order By :</label>
-    <select name="" id="">
-        <option value=""></option>
-        <option value=""></option>
-        <option value=""></option>
-        <option value=""></option>
+    <select [(ngModel)]="bugSortAttrName">
+        <option value="">---Select---</option>
+        <option value="id">Id</option>
+        <option value="name">Name</option>
+        <option value="isClosed">Status</option>
+        <option value="createdAt">Created</option>
     </select>
     <label for="">Descending ? :</label>
-    <input type="checkbox" name="" id="">
+    <input type="checkbox" [(ngModel)]="bugSortDesc" >
 </section>
 <section class="list">
     <ol>
-        <li *ngFor="let bug of bugs">
+        <li *ngFor="let bug of ( bugs | sort:bugSortAttrName:bugSortDesc ) ">
             <span 
                 class="bugname"
                 [ngClass]="{closed : bug.isClosed}"

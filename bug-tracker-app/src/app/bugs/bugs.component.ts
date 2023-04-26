@@ -12,6 +12,9 @@ export class BugsComponent implements OnInit{
   bugs : Bug[] = []
   newBugName : string = ''
 
+  bugSortAttrName : string = ''
+  bugSortDesc : boolean = false
+
   constructor(private bugOperations : BugOperationsService){
 
   }
@@ -44,5 +47,10 @@ export class BugsComponent implements OnInit{
         this.bugs.splice(i, 1)
       }
     }
+  }
+
+  getClosedBugsCount() : number {
+    // console.log('getClosedBugsCount triggered')
+    return this.bugs.reduce((result, bug) => bug.isClosed ? result + 1 : result, 0)
   }
 }
