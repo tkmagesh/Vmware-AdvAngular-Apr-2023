@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SortPipe<T> implements PipeTransform {
 
-  private getCompare(attrName : keyof(T)) : (x : T, y : T) => number {
+  private getComparer(attrName : keyof(T)) : (x : T, y : T) => number {
     return (x: T, y: T) => {
       if (x[attrName] < y[attrName]) return -1
       if (x[attrName] > y[attrName]) return 1
@@ -13,12 +13,12 @@ export class SortPipe<T> implements PipeTransform {
     }
   }
 
-  getDescComparer(comparer: (x: T, y: T) => number): (x: T, y: T) => number {
+  private getDescComparer(comparer: (x: T, y: T) => number): (x: T, y: T) => number {
     return (x: T, y: T) => comparer(x,y) * -1
   }
 
   transform(data : Array<T>, attrName : keyof(T), isDesc : boolean): Array<T> {
-    let comparer = this.getCompare(attrName)
+    let comparer = this.getComparer(attrName)
     if (isDesc) {
       comparer = this.getDescComparer(comparer)
     }
