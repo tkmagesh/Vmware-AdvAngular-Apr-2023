@@ -8,9 +8,10 @@ import { BugOperationsService } from './services/bug-operations.service';
   styleUrls: ['./bugs.component.css']
 })
 export class BugsComponent implements OnInit{
+
   
   bugs : Bug[] = []
-  newBugName : string = ''
+  
 
   bugSortAttrName : string = ''
   bugSortDesc : boolean = false
@@ -26,18 +27,14 @@ export class BugsComponent implements OnInit{
     this.bugs.push({ id: 4, name: 'Data integrity checks failed', isClosed: true, createdAt: new Date('10-Apr-2023') })
   }
 
-  onAddNewClick(){
+  //event handler function for the bugCreate event of the BugEdit component
+  onBugCreate(newBugName: string) {
     const newBugId = this.bugs.reduce((result, bug) => result > bug.id ? result : bug.id, 0) + 1
-    const newBug = this.bugOperations.createNew(newBugId, this.newBugName)
-
-    //mutation
-    // this.bugs.push(newBug)
-
-    //immutability
-    this.bugs = [...this.bugs, newBug]
+    const newBug = this.bugOperations.createNew(newBugId, newBugName)
+    this.bugs = [ ...this.bugs, newBug]
   }
 
-  onBugNameClick(bugToToggle : Bug){
+  onBugNameClick(bugToToggle: Bug) {
     const toggledBug = this.bugOperations.toggle(bugToToggle)
     this.bugs = this.bugs.map(bug => bug.id === bugToToggle.id ? toggledBug : bug)
   }

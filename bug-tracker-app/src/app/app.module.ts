@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { SortPipe } from './bugs/pipes/sort.pipe';
 import { ClosedCountPipe } from './bugs/pipes/closed-count.pipe';
 import { BugStatsComponent } from './bugs/bug-stats/bug-stats.component';
+import { BugEditComponent } from './bugs/bug-edit/bug-edit.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { BugStatsComponent } from './bugs/bug-stats/bug-stats.component';
     BugsComponent,
     SortPipe,
     ClosedCountPipe,
-    BugStatsComponent
+    BugStatsComponent,
+    BugEditComponent
   ],
   imports: [
     BrowserModule,
