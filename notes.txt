@@ -65,5 +65,17 @@ State Type
         DO NOT maintain this in the component
 
 
+Pure Function
+    A function is called a pure function if the invocation of the function can be replaced with the result of the function without affecting the final outcome
+
+    (OR)
+
+    A function without side-effects
+
+    (OR)
+
+    A function that always returns the same output for the given input(s)
+
+
 gkraksha@yahoo.com
 ruizr@vmware.com

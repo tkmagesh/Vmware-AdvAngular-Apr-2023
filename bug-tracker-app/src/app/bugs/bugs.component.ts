@@ -29,11 +29,17 @@ export class BugsComponent implements OnInit{
   onAddNewClick(){
     const newBugId = this.bugs.reduce((result, bug) => result > bug.id ? result : bug.id, 0) + 1
     const newBug = this.bugOperations.createNew(newBugId, this.newBugName)
-    this.bugs.push(newBug)
+
+    //mutation
+    // this.bugs.push(newBug)
+
+    //immutability
+    this.bugs = [...this.bugs, newBug]
   }
 
   onBugNameClick(bugToToggle : Bug){
-    this.bugOperations.toggle(bugToToggle)
+    const toggledBug = this.bugOperations.toggle(bugToToggle)
+    this.bugs = this.bugs.map(bug => bug.id === bugToToggle.id ? toggledBug : bug)
   }
 
   onBtnRemoveClick(bugToRemove : Bug){
@@ -50,7 +56,7 @@ export class BugsComponent implements OnInit{
   }
 
   getClosedBugsCount() : number {
-    // console.log('getClosedBugsCount triggered')
+    console.log('getClosedBugsCount triggered')
     return this.bugs.reduce((result, bug) => bug.isClosed ? result + 1 : result, 0)
   }
 }

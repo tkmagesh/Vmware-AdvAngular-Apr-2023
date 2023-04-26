@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { BugsComponent } from './bugs/bugs.component';
 import { FormsModule } from '@angular/forms';
 import { SortPipe } from './bugs/pipes/sort.pipe';
+import { ClosedCountPipe } from './bugs/pipes/closed-count.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     BugsComponent,
-    SortPipe
+    SortPipe,
+    ClosedCountPipe
   ],
   imports: [
     BrowserModule,

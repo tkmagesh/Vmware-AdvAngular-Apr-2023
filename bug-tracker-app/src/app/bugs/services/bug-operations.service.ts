@@ -18,7 +18,11 @@ export class BugOperationsService {
     return newBug;
   }
 
-  toggle(bugToToggle : Bug) {
-    bugToToggle.isClosed = !bugToToggle.isClosed
+  toggle(bugToToggle : Bug) : Bug {
+    //mutation
+    /* bugToToggle.isClosed = !bugToToggle.isClosed */
+
+    //immutability
+    return { ...bugToToggle, isClosed : !bugToToggle.isClosed}
   }
 }

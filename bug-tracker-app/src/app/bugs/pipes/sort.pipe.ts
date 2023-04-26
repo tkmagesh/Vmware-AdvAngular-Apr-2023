@@ -18,6 +18,7 @@ export class SortPipe<T> implements PipeTransform {
   }
 
   transform(data : Array<T>, attrName : keyof(T), isDesc : boolean): Array<T> {
+    console.log(`sort triggered attrName = ${String(attrName)}, isDesc = ${isDesc}`)
     let comparer = this.getComparer(attrName)
     if (isDesc) {
       comparer = this.getDescComparer(comparer)
