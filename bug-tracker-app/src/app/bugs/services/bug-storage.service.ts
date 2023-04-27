@@ -8,6 +8,7 @@ import { LOCAL_STORAGE } from 'src/app/shared';
 export class BugStorageService {
   // private storage = window.localStorage
   private currentBugId : number = 0
+  
 
   constructor(@Inject(LOCAL_STORAGE) private storage: Storage) {
 
