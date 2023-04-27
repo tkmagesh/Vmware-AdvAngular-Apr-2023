@@ -9,6 +9,7 @@ import { ClosedCountPipe } from './bugs/pipes/closed-count.pipe';
 import { BugStatsComponent } from './bugs/bug-stats/bug-stats.component';
 import { BugEditComponent } from './bugs/bug-edit/bug-edit.component';
 import { UtilsModule } from './utils/utils.module';
+import { LOCAL_STORAGE } from './shared';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { UtilsModule } from './utils/utils.module';
     FormsModule,
     UtilsModule
   ],
-  providers: [],
+  providers: [
+    {provide : LOCAL_STORAGE, useValue : window.localStorage}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

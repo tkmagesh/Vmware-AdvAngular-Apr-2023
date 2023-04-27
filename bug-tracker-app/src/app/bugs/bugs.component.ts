@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Bug } from './models/bug';
 import { BugOperationsService } from './services/bug-operations.service';
+import { BugStorageService } from './services/bug-storage.service';
 
 @Component({
   selector: 'app-bugs',
@@ -16,44 +17,43 @@ export class BugsComponent implements OnInit{
   bugSortAttrName : string = ''
   bugSortDesc : boolean = false
 
-  constructor(private bugOperations : BugOperationsService){
+  constructor(
+    private bugStorage : BugStorageService,
+    private bugOperations : BugOperationsService){
 
   }
 
   ngOnInit(): void {
-    /* this.bugs.push({id : 1, name : 'Server communication failure', isClosed : false, createdAt : new Date('10-Mar-2023')})
-    this.bugs.push({ id: 2, name: 'Application not responding', isClosed: true, createdAt: new Date('10-Feb-2023') })
-    this.bugs.push({ id: 3, name: 'User actions not recognized', isClosed: false, createdAt: new Date('10-Jan-2023') })
-    this.bugs.push({ id: 4, name: 'Data integrity checks failed', isClosed: true, createdAt: new Date('10-Apr-2023') }) */
+    this.bugs = this.bugStorage.getAll()
   }
 
   //event handler function for the bugCreate event of the BugEdit component
   onBugCreate(newBugName: string) {
-    const newBugId = this.bugs.reduce((result, bug) => result > bug.id ? result : bug.id, 0) + 1
-    const newBug = this.bugOperations.createNew(newBugId, newBugName)
+    const newBug = this.bugOperations.createNew(newBugName)
+    this.bugStorage.save(newBug)
     this.bugs = [ ...this.bugs, newBug]
   }
 
   onBugNameClick(bugToToggle: Bug) {
     const toggledBug = this.bugOperations.toggle(bugToToggle)
+    this.bugStorage.save(toggledBug)
     this.bugs = this.bugs.map(bug => bug.id === bugToToggle.id ? toggledBug : bug)
   }
 
   onBtnRemoveClick(bugToRemove : Bug){
-    const idx = this.bugs.indexOf(bugToRemove)
-    this.bugs.splice(idx, 1)
+    
+    this.bugStorage.remove(bugToRemove)
+    this.bugs = this.bugs.filter(bug => bug.id !== bugToRemove.id)
   }
 
   onBtnRemoveClosedClick(){
-    for (let i = this.bugs.length-1; i >= 0; i--){
-      if (this.bugs[i].isClosed){
-        this.bugs.splice(i, 1)
-      }
-    }
+    const closedBugs = this.bugs.filter(bug => bug.isClosed)
+    this.bugs = this.bugs.filter(bug => !bug.isClosed)
+    closedBugs.forEach(cb => this.bugStorage.remove(cb))
   }
-
+/* 
   getClosedBugsCount() : number {
     console.log('getClosedBugsCount triggered')
     return this.bugs.reduce((result, bug) => bug.isClosed ? result + 1 : result, 0)
-  }
+  } */
 }

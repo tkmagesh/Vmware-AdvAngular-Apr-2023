@@ -8,9 +8,9 @@ export class BugOperationsService {
 
   constructor() { }
 
-  createNew(newBugId : number, newBugName : string) : Bug {
+  createNew(newBugName : string) : Bug {
     const newBug: Bug = {
-      id: newBugId,
+      id: 0,
       name: newBugName,
       isClosed: false,
       createdAt: new Date()
@@ -19,10 +19,6 @@ export class BugOperationsService {
   }
 
   toggle(bugToToggle : Bug) : Bug {
-    //mutation
-    /* bugToToggle.isClosed = !bugToToggle.isClosed */
-
-    //immutability
     return { ...bugToToggle, isClosed : !bugToToggle.isClosed}
   }
 }
