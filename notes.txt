@@ -79,3 +79,8 @@ Pure Function
 
 gkraksha@yahoo.com
 ruizr@vmware.com
+
+
+To run the json-server
+    From the folder that has the db.json file
+        npx json-server db.json
