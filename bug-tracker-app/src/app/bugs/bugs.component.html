@@ -1,34 +1,36 @@
-<app-bug-stats [data]="bugOperations.bugs"></app-bug-stats>
+<div *ngIf = "bugOperations.bugs$ | async as bugs">
+    <app-bug-stats [data]="bugs"></app-bug-stats>
 
-<app-bug-edit (bugCreate)="onBugCreate($event)"></app-bug-edit>
+    <app-bug-edit (bugCreate)="onBugCreate($event)"></app-bug-edit>
 
-<!-- Refactor to BugSort component -->
-<section class="sort">
-    <label for="">Order By :</label>
-    <select [(ngModel)]="bugSortAttrName">
-        <option value="">---Select---</option>
-        <option value="id">Id</option>
-        <option value="name">Name</option>
-        <option value="isClosed">Status</option>
-        <option value="createdAt">Created</option>
-    </select>
-    <label for="">Descending ? :</label>
-    <input type="checkbox" [(ngModel)]="bugSortDesc" >
-</section>
+    <!-- Refactor to BugSort component -->
+    <section class="sort">
+        <label for="">Order By :</label>
+        <select [(ngModel)]="bugSortAttrName">
+            <option value="">---Select---</option>
+            <option value="id">Id</option>
+            <option value="name">Name</option>
+            <option value="isClosed">Status</option>
+            <option value="createdAt">Created</option>
+        </select>
+        <label for="">Descending ? :</label>
+        <input type="checkbox" [(ngModel)]="bugSortDesc" >
+    </section>
 
-<!-- Refactor to BugList component -->
-<section class="list">
-    <ol>
-        <!-- BugItem -->
-        <li *ngFor="let bug of ( bugOperations.bugs | sort:bugSortAttrName:bugSortDesc ) ">
-            <span 
-                class="bugname"
-                [ngClass]="{closed : bug.isClosed}"
-                (click)="onBugNameClick(bug)"
-            >{{bug.name}}</span>
-            <div class="datetime">{{bug.createdAt | elapsed}}</div>
-            <button (click)="onBtnRemoveClick(bug)">Remove</button>
-        </li>
-    </ol>
-    <button (click)="onBtnRemoveClosedClick()">Remove Closed</button>
-</section>
+    <!-- Refactor to BugList component -->
+    <section class="list">
+        <ol>
+            <!-- BugItem -->
+            <li *ngFor="let bug of bugs | sort:bugSortAttrName:bugSortDesc">
+                <span 
+                    class="bugname"
+                    [ngClass]="{closed : bug.isClosed}"
+                    (click)="onBugNameClick(bug)"
+                >{{bug.name}}</span>
+                <div class="datetime">{{bug.createdAt | elapsed}}</div>
+                <button (click)="onBtnRemoveClick(bug)">Remove</button>
+            </li>
+        </ol>
+        <button (click)="onBtnRemoveClosedClick()">Remove Closed</button>
+    </section>
+</div>

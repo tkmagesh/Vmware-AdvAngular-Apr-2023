@@ -10,6 +10,7 @@ import { BugStatsComponent } from './bugs/bug-stats/bug-stats.component';
 import { BugEditComponent } from './bugs/bug-edit/bug-edit.component';
 import { UtilsModule } from './utils/utils.module';
 import { LOCAL_STORAGE } from './shared';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { LOCAL_STORAGE } from './shared';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    UtilsModule
+    UtilsModule,
+    HttpClientModule
   ],
   providers: [
     {provide : LOCAL_STORAGE, useValue : window.localStorage}

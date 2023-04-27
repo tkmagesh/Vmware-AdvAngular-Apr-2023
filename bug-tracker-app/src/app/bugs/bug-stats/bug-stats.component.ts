@@ -10,7 +10,7 @@ import { Bug } from '../models/bug';
 export class BugStatsComponent {
   
   @Input('data')
-  bugs : Bug[] = []
+  bugs! : Bug[]
 
   getCurrrentTime(): string {
     return Date()
