@@ -84,3 +84,10 @@ ruizr@vmware.com
 To run the json-server
     From the folder that has the db.json file
         npx json-server db.json
+
+
+User Events (click, keypress) [Stream]
+setInterval [Stream]
+Ajax [Singular]
+Server Sent Events [Stream]
+WebSockets [Stream]
